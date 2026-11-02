@@ -1,0 +1,21 @@
+{
+  "base_model": "yolov8n.pt",
+  "epochs": 50,
+  "imgsz": 640,
+  "batch": 8,
+  "dataset_version": "c08e4084b4",
+  "class_counts_train": {
+    "0": {
+      "instances": 63,
+      "images": 62
+    },
+    "2": {
+      "instances": 1,
+      "images": 1
+    },
+    "1": {
+      "instances": 3,
+      "images": 3
+    }
+  }
+}

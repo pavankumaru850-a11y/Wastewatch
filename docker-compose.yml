@@ -1,0 +1,59 @@
+# WasteWatch: PostgreSQL + API + dashboard.
+#   cp .env.example .env   (fill in the values marked REQUIRED)
+#   docker compose up --build
+# Dashboard: http://localhost:8080   API docs are disabled in production; API: http://localhost:8000/api/health
+# The project also runs WITHOUT Docker (SQLite) -- see README.md.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-wastewatch}
+      POSTGRES_USER: ${POSTGRES_USER:-wastewatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-wastewatch} -d ${POSTGRES_DB:-wastewatch}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-wastewatch}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-wastewatch}
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY in .env (32+ random characters)}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
+      REVERSE_GEOCODING: ${REVERSE_GEOCODING:-false}
+      GEOCODER_USER_AGENT: ${GEOCODER_USER_AGENT:-WasteWatch/2.0 (academic project)}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-1440}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    volumes:
+      - uploads:/data/uploads          # citizen + cleanup photos
+      - ./backend/models:/app/models   # trained models + registry (created by training/export.py)
+      - config:/app/config             # editable scoring rules (admin dashboard writes here)
+    ports:
+      - "8000:8000"
+
+  dashboard:
+    build:
+      context: ./dashboard
+      args:
+        VITE_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  pgdata:
+  uploads:
+  config:

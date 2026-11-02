@@ -1,0 +1,25 @@
+{
+  "split": "test",
+  "images": 11,
+  "dataset_version": "c08e4084b4",
+  "evaluated_at": "2026-11-02T05:24:43.913714+00:00",
+  "precision": 0.8116085236867281,
+  "recall": 0.3888888888888889,
+  "map50": 0.3763540593286494,
+  "map5095": 0.21647398571523765,
+  "per_class": {
+    "general_waste": {
+      "precision": 0.6232170473734563,
+      "recall": 0.7777777777777778,
+      "ap50": 0.6816366900858702,
+      "ap50_95": 0.41162654285904676
+    },
+    "plastic": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "ap50": 0.07107142857142855,
+      "ap50_95": 0.021321428571428564
+    }
+  },
+  "note": "Classes absent from this split are not listed; do not quote a class number without its image count."
+}

@@ -1,0 +1,56 @@
+WASTEWATCH - HOW TO RUN (Windows, no Docker, SQLite)
+====================================================
+You need: Python 3.11+  and  Node.js 20+ (22 recommended).  Open a terminal in this folder.
+
+1) BACKEND  (terminal 1)
+   cd backend
+   python -m venv venv
+   venv\Scripts\activate
+   pip install -r requirements.txt
+   copy .env.example .env
+   python -m app.seed
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+   - "python -m app.seed" prints 3 demo logins ONCE (admin, staff, citizen). Write them down.
+     (Development only. It refuses to run when APP_ENV=production.)
+   - API check:  http://localhost:8000/api/health   Swagger docs: http://localhost:8000/docs
+
+2) DASHBOARD  (terminal 2)  -  admin and staff
+   cd dashboard
+   npm install
+   npm run dev
+   Open http://localhost:5173 and log in with the admin or staff login from step 1.
+   (It talks to http://localhost:8000 by default; nothing to configure on the same PC.)
+
+3) MOBILE APP  (terminal 3)  -  citizen
+   cd mobile
+   copy .env.example .env
+   Edit mobile\.env:  EXPO_PUBLIC_API_URL=http://<YOUR-PC-IP>:8000   (phone and PC on the same Wi-Fi)
+   npm install
+   npx expo start
+   Scan the QR code with the Expo Go app. For use from ANY network, use an HTTPS URL (see docs\deployment.md).
+   Log in with the citizen login from step 1, or register a new citizen account in the app.
+
+HOW IT DECIDES  (the main goal of WasteWatch)
+   Every photo is processed by the active object detector, which returns waste-item boxes and confidence.
+   The existing annotations are limited; the held-out detector test set is only 11 images.
+   - WASTE      -> saved with photo, GPS, village, confidence, and detected boxes; staff + admin get a notification
+                   ("Waste detected - report #N"); it shows in Reports, Map, Hotspots, Analytics.
+   - NOT WASTE  -> saved on a separate side ("Not Waste" page in the admin dashboard); NO notification,
+                   NO hotspot, NOT counted in any waste number. An admin can correct a wrong decision
+                   ("It is waste" button), and the report then moves into the waste reports.
+   - AI unavailable / photo too blurry -> the photo is still saved and staff review it by hand.
+
+THE AI MODEL
+   backend\models\best.pt is the active trained object detector (11-image test set; see README.md for measured results).
+   The backend requirements install its AI runtime. Restart uvicorn after changing the deployed model.
+   The previous whole-photo WASTE/NOT WASTE classifier is retained in backend\models\versions.
+   To retrain the detector: cd training && python train.py, then evaluate.py and export.py.
+
+RUN THE TESTS (optional)
+   cd backend  &&  python -m pytest tests
+   cd mobile   &&  npm test
+   cd training &&  python -m pytest tests
+
+DOCKER (optional): copy .env.example to .env, fill it in, then:  docker compose up --build   (see docs\deployment.md)
+MORE: README.md, docs\UPGRADE_V2.md (what changed + known limits), docs\DEMO_WALKTHROUGH.md (viva demo script)

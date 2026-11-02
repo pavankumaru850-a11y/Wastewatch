@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "WasteWatch",
+    "slug": "wastewatch",
+    "scheme": "wastewatch",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "WasteWatch uses your camera to photograph roadside waste for reporting."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "WasteWatch uses your location to record exactly where waste was found."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "WasteWatch lets you choose an existing photo of roadside waste to report."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "WasteWatch uses your camera to photograph roadside waste for reporting.",
+        "NSLocationWhenInUseUsageDescription": "WasteWatch uses your location to record exactly where waste was found."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1F4D38",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "package": "com.wastewatch.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "_doc": "Editable scoring rules. Every number used by the severity and priority engines lives here; nothing is hard-coded in Python.",
+  "confidence_levels": {
+    "high_min": 0.75,
+    "medium_min": 0.5
+  },
+  "severity": {
+    "object_count_points": [
+      [
+        1,
+        8
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        7,
+        30
+      ],
+      [
+        15,
+        55
+      ]
+    ],
+    "class_points": {
+      "drainage_waste": 20,
+      "general_waste": 8,
+      "plastic": 5,
+      "paper": 3,
+      "stagnant_waste": 20,
+      "construction_waste": 12,
+      "garbage_pile": 10,
+      "food_waste": 8,
+      "glass": 8,
+      "bottle": 5
+    },
+    "default_class_points": 5,
+    "area_points_per_full_frame": 20,
+    "confidence_points_max": 8,
+    "repeat_report_points_each": 5,
+    "repeat_report_points_max": 15,
+    "hotspot_points": 10,
+    "levels": {
+      "MEDIUM": 30,
+      "HIGH": 55,
+      "CRITICAL": 80
+    }
+  },
+  "priority": {
+    "weights": {
+      "quantity": 0.25,
+      "severity": 0.3,
+      "repeat": 0.1,
+      "hotspot": 0.1,
+      "drainage": 0.15,
+      "confidence": 0.1
+    },
+    "quantity_full_at_objects": 20,
+    "repeat_full_at_reports": 5,
+    "hotspot_full_at_reports": 10,
+    "levels": {
+      "MEDIUM": 31,
+      "HIGH": 61,
+      "CRITICAL": 81
+    }
+  },
+  "deadline_hours": {
+    "CRITICAL": 6,
+    "HIGH": 24,
+    "MEDIUM": 72,
+    "LOW": 168
+  }
+}

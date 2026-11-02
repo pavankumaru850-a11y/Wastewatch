@@ -1,0 +1,143 @@
+[
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v1",
+    "path": "backend/models/versions/waste-not-waste-v1.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-28T10:31:17.820922+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-28T12:24:53.558881+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-29T06:23:53.865499+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-29T06:43:35.461589+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-29T06:57:08.269471+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-29T08:04:27.496491+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-10-30T10:52:09.876863+00:00",
+    "deployed": false,
+    "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-yolo",
+    "version": "waste-localization-v1",
+    "path": "backend/models/wastewatch_waste-localization-v1/best.pt",
+    "precision": 0.8116085236867281,
+    "recall": 0.3888888888888889,
+    "map50": 0.3763540593286494,
+    "map5095": 0.21647398571523765,
+    "metrics_split": "test",
+    "metrics_images": 11,
+    "dataset_version": "c08e4084b4",
+    "trained_at": "2026-11-02T05:25:07.890277+00:00",
+    "deployed": true,
+    "notes": "YOLOv8n object detector deployed from existing annotated dataset. Held-out test: 11 images, 10 boxes, precision 0.8116, recall 0.3889, mAP50 0.3764, mAP50-95 0.2165; very small split, results are noisy."
+  }
+]

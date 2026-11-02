@@ -1,0 +1,11 @@
+# WasteWatch multi-class YOLO dataset config.
+# Annotate images before training; class IDs must match labels.
+path: ./dataset
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: general_waste
+  1: plastic
+  2: paper

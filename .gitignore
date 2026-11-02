@@ -1,0 +1,38 @@
+# Local environment files; keep examples for setup documentation.
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python environments, bytecode, and test caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+**/.pytest_cache/
+
+# Local databases, logs, and uploaded files.
+*.db
+*.sqlite
+*.sqlite3
+*.log
+backend/uploads/
+
+# JavaScript dependencies and generated output.
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+.expo/
+web-build/
+
+# Training output and local dataset resolution.
+training/runs/
+training/.data_resolved.yaml
+
+# Local dataset resolution.
+.data_resolved.yaml

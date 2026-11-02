@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg: #f0f3ec;
+  --surface: #ffffff;
+  --ink: #182420;
+  --ink-soft: #52685c;
+  --line: #dbe2d6;
+  --brand: #2f6b4f;
+  --brand-dark: #1f4d38;
+  --clay: #b8792e;
+  --rust: #a8412a;
+  --blue: #35618f;
+  --gray: #6b7280;
+
+  --status-new: #6b7280;
+  --status-verified: #2f6b4f;
+  --status-assigned: #35618f;
+  --status-in_progress: #b8792e;
+  --status-cleaned: #4a8a67;
+  --status-completed: #1f7a4d;
+  --status-rejected: #a8412a;
+
+  --radius: 8px;
+  --font-ui: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+h1 { font-size: 22px; }
+h2 { font-size: 17px; }
+h3 { font-size: 14px; }
+p { margin: 0 0 8px; color: var(--ink-soft); }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.app-shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--brand-dark);
+  color: #eaf1ec;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar .brand { font-weight: 700; font-size: 17px; color: #fff; padding: 0 10px 20px; }
+.sidebar .brand span { color: #9fd9b8; }
+.sidebar a {
+  color: #cfe3d6;
+  padding: 9px 10px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.sidebar a:hover { background: rgba(255,255,255,0.08); text-decoration: none; }
+.sidebar a.active { background: var(--brand); color: #fff; }
+.sidebar .role-tag {
+  margin-top: auto;
+  font-size: 11px;
+  color: #9db8a8;
+  padding: 10px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.main { flex: 1; min-width: 0; }
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.content { padding: 24px; max-width: 1200px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.stat-card { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--brand); border-radius: var(--radius); padding: 14px 16px; }
+.stat-card .value { font-size: 26px; font-weight: 700; font-family: var(--font-mono); }
+.stat-card .label { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; font-weight: 600; color: var(--ink-soft); padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:hover td { background: #f7f9f5; }
+
+.badge {
+  display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11.5px; font-weight: 600;
+  color: #fff; white-space: nowrap;
+}
+.badge-thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+
+button, .btn {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--brand); background: var(--brand); color: #fff;
+  padding: 7px 14px; border-radius: 6px;
+}
+button.secondary, .btn.secondary { background: var(--surface); color: var(--ink); border-color: var(--line); }
+button.danger { background: var(--rust); border-color: var(--rust); }
+button:disabled { opacity: 0.5; cursor: default; }
+
+input, select, textarea {
+  font-family: var(--font-ui); font-size: 13px; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink);
+}
+label { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); display: block; margin-bottom: 4px; }
+.field { margin-bottom: 14px; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg); }
+.login-card { width: 360px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 32px; }
+.login-card h1 { text-align: center; margin-bottom: 4px; }
+.login-card .sub { text-align: center; margin-bottom: 24px; }
+.error-text { color: var(--rust); font-size: 12.5px; margin-top: 6px; }
+.muted { color: var(--ink-soft); font-size: 12.5px; }
+
+.grid-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+
+/* v2 workflow statuses */
+:root {
+  --status-ai_detected: #7c6fb0; --status-staff_review: #8a7a2f;
+  --status-cleanup_verification: #2f8a8a; --status-closed: #1f7a4d;
+}
+
+/* ---- responsive / small screens ---- */
+.card { overflow-x: auto; }               /* wide tables scroll inside their card, never the page */
+table { min-width: 560px; }
+.chart-card { min-width: 0; }
+@media (max-width: 800px) {
+  .app-shell { flex-direction: column; }
+  .sidebar {
+    position: static; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap;
+    align-items: center; gap: 4px; padding: 8px 10px;
+  }
+  .sidebar .brand { padding: 0 10px 0 0; flex: 0 0 auto; }
+  .sidebar a { padding: 6px 10px; font-size: 13px; }
+  .sidebar .role-tag { margin: 0; flex: 1 0 100%; padding: 6px 10px 0; }
+  .content { padding: 12px; }
+  .topbar { padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
+  .filters select, .filters input, .filters button { flex: 1 1 140px; }
+  input, select, textarea { max-width: 100%; }
+}

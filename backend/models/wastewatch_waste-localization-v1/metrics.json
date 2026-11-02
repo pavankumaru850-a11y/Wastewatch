@@ -1,0 +1,29 @@
+{
+  "model_name": "wastewatch-yolo",
+  "version": "waste-localization-v1",
+  "path": "backend/models/wastewatch_waste-localization-v1/best.pt",
+  "precision": 0.8116085236867281,
+  "recall": 0.3888888888888889,
+  "map50": 0.3763540593286494,
+  "map5095": 0.21647398571523765,
+  "metrics_split": "test",
+  "metrics_images": 11,
+  "dataset_version": "c08e4084b4",
+  "trained_at": "2026-11-02T05:25:07.890277+00:00",
+  "deployed": true,
+  "notes": "YOLOv8n object detector deployed from existing annotated dataset. Held-out test: 11 images, 10 boxes, precision 0.8116, recall 0.3889, mAP50 0.3764, mAP50-95 0.2165; very small split, results are noisy.",
+  "per_class": {
+    "general_waste": {
+      "precision": 0.6232170473734563,
+      "recall": 0.7777777777777778,
+      "ap50": 0.6816366900858702,
+      "ap50_95": 0.41162654285904676
+    },
+    "plastic": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "ap50": 0.07107142857142855,
+      "ap50_95": 0.021321428571428564
+    }
+  }
+}

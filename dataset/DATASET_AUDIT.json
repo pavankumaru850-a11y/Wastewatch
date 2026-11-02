@@ -1,0 +1,19 @@
+{
+  "uploaded_archive": "wasteimages(3).zip",
+  "uploaded_images": 95,
+  "exact_duplicate_pairs": [
+    [
+      "6.jpg",
+      "7.jpg"
+    ],
+    [
+      "75.jpg",
+      "77.jpg"
+    ]
+  ],
+  "unique_images_after_deduplication": 93,
+  "yolo_label_files_found_in_uploaded_archive": 0,
+  "not_waste_images_provided": 0,
+  "training_ready": false,
+  "reason": "YOLO bounding-box annotations are required; negative examples are also needed for robust waste-vs-background performance."
+}

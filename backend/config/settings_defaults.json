@@ -1,0 +1,21 @@
+{
+  "detection_confidence": 0.4,
+  "duplicate_distance_m": 50,
+  "duplicate_time_window_hours": 168,
+  "duplicate_hash_max_distance": 10,
+  "hotspot_radius_m": 100,
+  "hotspot_min_reports": 3,
+  "max_image_mb": 10,
+  "allowed_image_types": [
+    "jpeg",
+    "png",
+    "webp"
+  ],
+  "min_image_side_px": 224,
+  "blur_threshold": 20.0,
+  "dark_mean_max": 25,
+  "bright_mean_min": 235,
+  "model_version": "v1.0",
+  "max_reports_per_hour": 60,
+  "duplicate_close_distance_m": 10
+}

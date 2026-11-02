@@ -1,0 +1,349 @@
+{
+ "waste": {
+  "success": true,
+  "detected": true,
+  "is_waste": true,
+  "code": "WASTE_DETECTED",
+  "message": "Waste detected",
+  "detections": [
+   {
+    "class_name": "plastic",
+    "confidence": 0.91,
+    "confidence_level": "HIGH",
+    "bbox": [
+     10.0,
+     10.0,
+     100.0,
+     100.0
+    ],
+    "box": {
+     "x1": 10.0,
+     "y1": 10.0,
+     "x2": 100.0,
+     "y2": 100.0
+    }
+   },
+   {
+    "class_name": "plastic",
+    "confidence": 0.8,
+    "confidence_level": "HIGH",
+    "bbox": [
+     10.0,
+     10.0,
+     100.0,
+     100.0
+    ],
+    "box": {
+     "x1": 10.0,
+     "y1": 10.0,
+     "x2": 100.0,
+     "y2": 100.0
+    }
+   }
+  ],
+  "object_count": 2,
+  "model_version": "v1.0",
+  "confidence_level": "HIGH",
+  "severity": "LOW",
+  "severity_score": 22.5,
+  "priority_score": 17.8,
+  "priority_level": "LOW",
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 130.1,
+    "blur_score": 6856.4
+   },
+   "message": null
+  }
+ },
+ "paper": {
+  "success": true,
+  "detected": true,
+  "is_waste": true,
+  "code": "WASTE_DETECTED",
+  "message": "Waste detected",
+  "detections": [
+   {
+    "class_name": "paper",
+    "confidence": 0.8,
+    "confidence_level": "HIGH",
+    "bbox": [
+     10.0,
+     10.0,
+     100.0,
+     100.0
+    ],
+    "box": {
+     "x1": 10.0,
+     "y1": 10.0,
+     "x2": 100.0,
+     "y2": 100.0
+    }
+   }
+  ],
+  "object_count": 1,
+  "model_version": "v1.0",
+  "confidence_level": "HIGH",
+  "severity": "LOW",
+  "severity_score": 18.8,
+  "priority_score": 14.9,
+  "priority_level": "LOW",
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 129.5,
+    "blur_score": 6618.9
+   },
+   "message": null
+  }
+ },
+ "none": {
+  "success": true,
+  "detected": false,
+  "is_waste": false,
+  "code": "NOT_WASTE",
+  "message": "No waste detected.",
+  "detections": [],
+  "object_count": 0,
+  "model_version": "v1.0",
+  "confidence_level": null,
+  "severity": null,
+  "severity_score": null,
+  "priority_score": null,
+  "priority_level": null,
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 130.1,
+    "blur_score": 6751.7
+   },
+   "message": null
+  }
+ },
+ "not_waste": {
+  "success": true,
+  "detected": false,
+  "is_waste": false,
+  "code": "NOT_WASTE",
+  "message": "Not waste. This photo is saved separately and no cleanup request is created.",
+  "detections": [],
+  "object_count": 0,
+  "model_version": "v1.0",
+  "confidence_level": null,
+  "severity": null,
+  "severity_score": null,
+  "priority_score": null,
+  "priority_level": null,
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 129.4,
+    "blur_score": 6763.8
+   },
+   "message": null
+  }
+ },
+ "low": {
+  "success": true,
+  "detected": true,
+  "is_waste": true,
+  "code": "LOW_CONFIDENCE",
+  "message": "Low-confidence detection. Please capture a clearer image.",
+  "detections": [
+   {
+    "class_name": "plastic",
+    "confidence": 0.42,
+    "confidence_level": "LOW",
+    "bbox": [
+     10.0,
+     10.0,
+     100.0,
+     100.0
+    ],
+    "box": {
+     "x1": 10.0,
+     "y1": 10.0,
+     "x2": 100.0,
+     "y2": 100.0
+    }
+   }
+  ],
+  "object_count": 1,
+  "model_version": "v1.0",
+  "confidence_level": "LOW",
+  "severity": "LOW",
+  "severity_score": 17.8,
+  "priority_score": 10.8,
+  "priority_level": "LOW",
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 130.0,
+    "blur_score": 6924.6
+   },
+   "message": null
+  }
+ },
+ "quality": {
+  "success": false,
+  "detected": false,
+  "is_waste": null,
+  "code": "IMAGE_QUALITY_LOW",
+  "message": "Image quality is too low. Please capture a clearer image.",
+  "detections": [],
+  "object_count": 0,
+  "model_version": "v1.0",
+  "confidence_level": null,
+  "severity": null,
+  "severity_score": null,
+  "priority_score": null,
+  "priority_level": null,
+  "quality": {
+   "ok": false,
+   "reasons": [
+    "blurry"
+   ],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 128.0,
+    "blur_score": 0.0
+   },
+   "message": "Image quality is too low. Please capture a clearer image."
+  }
+ },
+ "unavailable": {
+  "success": false,
+  "detected": false,
+  "is_waste": null,
+  "code": "MODEL_UNAVAILABLE",
+  "message": "AI model is not currently available.",
+  "detections": [],
+  "object_count": 0,
+  "model_version": null,
+  "confidence_level": null,
+  "severity": null,
+  "severity_score": null,
+  "priority_score": null,
+  "priority_level": null,
+  "quality": {
+   "ok": true,
+   "reasons": [],
+   "metrics": {
+    "width": 400,
+    "height": 300,
+    "format": "jpeg",
+    "mean_brightness": 128.7,
+    "blur_score": 6845.1
+   },
+   "message": null
+  }
+ },
+ "report": {
+  "id": 1,
+  "user_id": 1,
+  "image_path": "uploads/reports/84ca67d40f504f9b92b3e5855b5a0133.jpg",
+  "waste_type": "plastic",
+  "confidence": 0.9,
+  "is_waste": true,
+  "latitude": 15.0,
+  "longitude": 75.0,
+  "address": null,
+  "village": null,
+  "district": null,
+  "description": null,
+  "status": "AI_DETECTED",
+  "priority": "LOW",
+  "severity_score": 22.1,
+  "deadline": "2026-10-15T06:30:35.029106",
+  "is_duplicate": false,
+  "duplicate_of_id": null,
+  "gps_accuracy": 7.0,
+  "town": null,
+  "state": null,
+  "country": null,
+  "severity": "LOW",
+  "priority_score": 17.1,
+  "object_count": 2,
+  "detection_summary": "1x plastic, 1x paper",
+  "model_version": "v1.0",
+  "confidence_level": "HIGH",
+  "is_possible_duplicate": false,
+  "hotspot_id": null,
+  "created_at": "2026-10-08T06:30:35.017863",
+  "updated_at": "2026-10-08T06:30:35.030954",
+  "detections": [
+   {
+    "id": 1,
+    "class_name": "plastic",
+    "confidence": 0.9,
+    "x1": 10.0,
+    "y1": 10.0,
+    "x2": 100.0,
+    "y2": 100.0
+   },
+   {
+    "id": 2,
+    "class_name": "paper",
+    "confidence": 0.7,
+    "x1": 10.0,
+    "y1": 10.0,
+    "x2": 100.0,
+    "y2": 100.0
+   }
+  ],
+  "assignment": null,
+  "completion": null
+ },
+ "history": {
+  "current": "AI_DETECTED",
+  "allowed_next": [
+   "NOT_WASTE",
+   "REJECTED",
+   "STAFF_REVIEW",
+   "VERIFIED"
+  ],
+  "history": [
+   {
+    "old": "NEW",
+    "new": "AI_DETECTED",
+    "by": 1,
+    "remarks": "AI detection completed",
+    "at": "2026-10-08T06:30:35.030201"
+   }
+  ]
+ },
+ "notifications": [
+  {
+   "id": 1,
+   "title": "Report submitted",
+   "body": "Waste detected",
+   "kind": "report",
+   "report_id": 1,
+   "is_read": false,
+   "created_at": "2026-10-08T06:30:35.037593"
+  }
+ ]
+}
