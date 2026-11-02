@@ -1,3 +1,4 @@
+
 # Local environment files; keep examples for setup documentation.
 .env
 .env.*
@@ -33,6 +34,4 @@ web-build/
 # Training output and local dataset resolution.
 training/runs/
 training/.data_resolved.yaml
-
-# Local dataset resolution.
 .data_resolved.yaml
