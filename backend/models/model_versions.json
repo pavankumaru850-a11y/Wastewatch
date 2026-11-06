@@ -139,5 +139,41 @@
     "trained_at": "2026-11-02T05:25:07.890277+00:00",
     "deployed": true,
     "notes": "YOLOv8n object detector deployed from existing annotated dataset. Held-out test: 11 images, 10 boxes, precision 0.8116, recall 0.3889, mAP50 0.3764, mAP50-95 0.2165; very small split, results are noisy."
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-light-v1",
+    "path": "backend\\models\\versions\\waste-not-waste-light-v1.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-11-04T04:56:53.887169+00:00",
+    "deployed": true,
+    "notes": "classifier, 20 epochs, imgsz 160"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v2",
+    "path": "backend\\models\\versions\\waste-not-waste-v2.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 1.0,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-11-06T08:20:07.876450+00:00",
+    "deployed": true,
+    "notes": "classifier, 40 epochs, imgsz 224"
   }
 ]
