@@ -46,6 +46,7 @@ def test_training_dataset_summary_is_admin_only(client, tmp_path, monkeypatch):
     dataset_dir = tmp_path / "training"
     (dataset_dir / "dataset_binary_combined" / "waste").mkdir(parents=True)
     (dataset_dir / "dataset_binary_combined" / "waste" / "source.JPG").write_bytes(b"image")
+    (dataset_dir / "dataset_binary_combined" / "waste" / "unsupported.webp").write_bytes(b"image")
     (dataset_dir / "dataset_binary_combined" / "waste" / "notes.txt").write_text("not an image")
     (dataset_dir / "dataset_cls" / "train" / "waste").mkdir(parents=True)
     (dataset_dir / "dataset_cls" / "train" / "waste" / "train.jpg").write_bytes(b"image")

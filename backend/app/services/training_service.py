@@ -16,7 +16,7 @@ BACKEND_DIR = Path(__file__).resolve().parent.parent.parent
 REPO_ROOT = Path(os.environ.get("WW_REPO_ROOT") or BACKEND_DIR.parent)
 MODEL_VERSIONS_FILE = Path(os.environ.get("MODEL_REGISTRY") or BACKEND_DIR / "models" / "model_versions.json")
 TRAINING_DATA_DIR = Path(os.environ.get("WW_TRAINING_DATA_DIR") or REPO_ROOT / "training")
-IMAGE_EXTENSIONS = {".bmp", ".jpeg", ".jpg", ".png", ".webp"}
+IMAGE_EXTENSIONS = {".jpeg", ".jpg", ".png"}
 
 
 def resolve_model_path(entry: dict) -> Path | None:

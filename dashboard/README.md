@@ -44,7 +44,8 @@ Analytics (6 real charts off `/api/dashboard/analytics`).
 The dataset summary counts images in `training/dataset_binary_combined` and
 `training/dataset_cls`. Docker Compose mounts `training/` read-only for this
 endpoint; for other backend deployments, set `WW_TRAINING_DATA_DIR` to the
-training directory.
+training directory. The split counts reflect trainer-supported image formats;
+exact duplicate photos are removed when the splits are prepared.
 
 Staff: Dashboard, Assigned Reports, Report Details (Start Cleaning / Mark
 Completed with photo + GPS), Map -- all automatically scoped to their own

@@ -175,5 +175,23 @@
     "trained_at": "2026-11-06T08:20:07.876450+00:00",
     "deployed": true,
     "notes": "classifier, 40 epochs, imgsz 224"
+  },
+  {
+    "model_name": "wastewatch-waste-vs-not",
+    "version": "waste-not-waste-v3",
+    "path": "backend\\models\\versions\\waste-not-waste-v3.pt",
+    "precision": null,
+    "recall": null,
+    "map50": null,
+    "map5095": null,
+    "top1_accuracy": 0.9933775067329407,
+    "top5_accuracy": 1.0,
+    "classes": [
+      "not_waste",
+      "waste"
+    ],
+    "trained_at": "2026-11-06T09:05:59.643934+00:00",
+    "deployed": false,
+    "notes": "classifier, 30 epochs, imgsz 224"
   }
 ]

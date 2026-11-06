@@ -40,6 +40,7 @@ export default function Training() {
             <p className="muted">
               {Object.entries(dataset.source.classes).map(([name, count]) => `${name}: ${count}`).join(" · ") || "No source images found."}
             </p>
+            <p className="muted">Exact duplicate photos are excluded when preparing the splits, so split totals can be lower than the source count.</p>
             <h3 style={{ marginTop: 16 }}>Train / validation / test split</h3>
             <table>
               <thead>
