@@ -3,6 +3,7 @@ import io
 from app.services import scoring_service as sc
 from app.services.report_service import compare_counts
 from app.services.similarity_service import dhash, hamming
+from app.services import training_service
 from tests.conftest import FAKE, det, login, make_image, submit
 
 
@@ -39,6 +40,33 @@ def test_admin_creates_staff(client):
     h = login(client, "admin")
     r = client.post("/api/admin/users", headers=h, json={"name": "S", "email": "s3@t.com", "password": "password123", "role": "STAFF"})
     assert r.status_code == 201 and r.json()["role"] == "STAFF"
+
+
+def test_training_dataset_summary_is_admin_only(client, tmp_path, monkeypatch):
+    dataset_dir = tmp_path / "training"
+    (dataset_dir / "dataset_binary_combined" / "waste").mkdir(parents=True)
+    (dataset_dir / "dataset_binary_combined" / "waste" / "source.JPG").write_bytes(b"image")
+    (dataset_dir / "dataset_binary_combined" / "waste" / "notes.txt").write_text("not an image")
+    (dataset_dir / "dataset_cls" / "train" / "waste").mkdir(parents=True)
+    (dataset_dir / "dataset_cls" / "train" / "waste" / "train.jpg").write_bytes(b"image")
+    monkeypatch.setattr(training_service, "TRAINING_DATA_DIR", dataset_dir)
+
+    assert client.get("/api/training/dataset").status_code == 401
+    staff_headers = login(client, "staff")
+    assert client.get("/api/training/dataset", headers=staff_headers).status_code == 403
+
+    admin_headers = login(client, "admin")
+    response = client.get("/api/training/dataset", headers=admin_headers)
+    assert response.status_code == 200
+    assert response.json() == {
+        "available": True,
+        "source": {"classes": {"waste": 1}, "total": 1},
+        "splits": {
+            "train": {"classes": {"waste": 1}, "total": 1},
+            "val": {"classes": {}, "total": 0},
+            "test": {"classes": {}, "total": 0},
+        },
+    }
 
 
 # ---------------- scoring ----------------

@@ -51,6 +51,7 @@ export const dashboardApi = {
 export const trainingApi = {
   currentModel: () => api.get("/api/training/model"),
   history: () => api.get("/api/training/model/history"),
+  dataset: () => api.get("/api/training/dataset"),
   images: () => api.get("/api/training/images"),
 };
 

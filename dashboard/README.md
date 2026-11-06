@@ -38,8 +38,13 @@ there's no public staff signup form, on purpose).
 
 Admin: Dashboard, Reports, Report Details (verify / assign / reject / change
 priority / add-to-training), Map, Users & Staff, Dataset & Training (reads
-`model_versions.json` via the backend), Analytics (6 real charts off
-`/api/dashboard/analytics`).
+model history, dataset class/split counts, and verified images via the backend),
+Analytics (6 real charts off `/api/dashboard/analytics`).
+
+The dataset summary counts images in `training/dataset_binary_combined` and
+`training/dataset_cls`. Docker Compose mounts `training/` read-only for this
+endpoint; for other backend deployments, set `WW_TRAINING_DATA_DIR` to the
+training directory.
 
 Staff: Dashboard, Assigned Reports, Report Details (Start Cleaning / Mark
 Completed with photo + GPS), Map -- all automatically scoped to their own

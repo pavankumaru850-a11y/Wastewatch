@@ -15,6 +15,8 @@ from ..models import TrainingImage, User
 BACKEND_DIR = Path(__file__).resolve().parent.parent.parent
 REPO_ROOT = Path(os.environ.get("WW_REPO_ROOT") or BACKEND_DIR.parent)
 MODEL_VERSIONS_FILE = Path(os.environ.get("MODEL_REGISTRY") or BACKEND_DIR / "models" / "model_versions.json")
+TRAINING_DATA_DIR = Path(os.environ.get("WW_TRAINING_DATA_DIR") or REPO_ROOT / "training")
+IMAGE_EXTENSIONS = {".bmp", ".jpeg", ".jpg", ".png", ".webp"}
 
 
 def resolve_model_path(entry: dict) -> Path | None:
@@ -42,6 +44,37 @@ def get_current_deployed_model() -> dict | None:
     versions = get_model_versions()
     deployed = [v for v in versions if v.get("deployed")]
     return deployed[-1] if deployed else None
+
+
+def _count_dataset_classes(directory: Path) -> dict[str, int]:
+    if not directory.is_dir():
+        return {}
+    return {
+        class_dir.name: sum(
+            1 for image in class_dir.rglob("*")
+            if image.is_file() and image.suffix.lower() in IMAGE_EXTENSIONS
+        )
+        for class_dir in sorted(directory.iterdir())
+        if class_dir.is_dir()
+    }
+
+
+def _dataset_counts(directory: Path) -> dict:
+    classes = _count_dataset_classes(directory)
+    return {"classes": classes, "total": sum(classes.values())}
+
+
+def get_dataset_summary() -> dict:
+    combined_dir = TRAINING_DATA_DIR / "dataset_binary_combined"
+    split_dir = TRAINING_DATA_DIR / "dataset_cls"
+    return {
+        "available": combined_dir.is_dir() or split_dir.is_dir(),
+        "source": _dataset_counts(combined_dir),
+        "splits": {
+            split: _dataset_counts(split_dir / split)
+            for split in ("train", "val", "test")
+        },
+    }
 
 
 def add_verified_training_image(

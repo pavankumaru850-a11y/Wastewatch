@@ -27,6 +27,11 @@ def model_history(current_user: User = Depends(require_admin)):
     return training_service.get_model_versions()
 
 
+@router.get("/dataset")
+def dataset_summary(current_user: User = Depends(require_admin)):
+    return training_service.get_dataset_summary()
+
+
 @router.get("/images")
 def verified_training_images(current_user: User = Depends(require_admin), db: Session = Depends(get_db)):
     images = training_service.list_verified_training_images(db)
