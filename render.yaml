@@ -1,10 +1,10 @@
-# Render Blueprint: hosts the WasteWatch API + a PostgreSQL database so the phone app works from anywhere.
+# Render Blueprint: free demo API, PostgreSQL, and dashboard. The native mobile app is built separately.
 # Steps are in DEPLOY_ONLINE.md. Render dashboard -> New -> Blueprint -> pick your GitHub repo.
 databases:
   - name: wastewatch-db
     databaseName: wastewatch
     user: wastewatch
-    plan: free            # free Postgres is deleted after 30 days; change to basic-256mb to keep it
+    plan: free            # free Postgres expires 30 days after creation
 
 services:
   - type: web
@@ -12,12 +12,8 @@ services:
     runtime: docker
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
-    plan: standard        # PyTorch inference needs more memory than the 512 MB starter plan
+    plan: free            # demo mode: sleeps when idle; AI inference is disabled below
     healthCheckPath: /api/health
-    disk:                 # keeps citizen photos across restarts/deploys
-      name: uploads
-      mountPath: /data
-      sizeGB: 2
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -31,9 +27,24 @@ services:
         value: "8000"
       - key: UPLOAD_DIR
         value: /data/uploads
+      - key: MODEL_PATH
+        value: /data/ai-disabled.pt
       - key: CORS_ORIGINS
         value: "*"
       - key: ADMIN_EMAIL     # you choose these two in the Render dashboard (they are asked on first deploy)
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
+
+  - type: web
+    name: wastewatch-dashboard
+    runtime: static
+    buildCommand: cd dashboard && npm ci && npm run build
+    staticPublishPath: dashboard/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
